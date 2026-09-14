@@ -18,5 +18,5 @@ jobs:
   #deploy
   CD:
     needs: docker-build-and-push
-    uses: ./.github/workflows/CD.yml
+    uses: ./.github/workflows/Deploy.yml
     secrets: inherit
