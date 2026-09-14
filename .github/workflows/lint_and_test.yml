@@ -8,6 +8,9 @@ on:
 jobs:
   code-linter-tester:
     runs-on: ubuntu-latest
+    strategy:
+       matrix:
+        python-version: [3.11, 3.12, 3.14]
     steps:
       - name: checkout code
         uses: actions/checkout@v7
@@ -15,7 +18,7 @@ jobs:
       - name: set up python
         uses: actions/setup-python@v7
         with:
-          python-version: 3.11
+          python-version: ${{ matrix.python-version }}
 
       - name: install dependencies
         run: pip install -r requirements.txt
