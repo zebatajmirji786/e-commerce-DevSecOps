@@ -3,7 +3,7 @@ name: CI
 
 on:
   push:
-  
+
 jobs:
   code lint:
     uses: ./.github/workflows/lint_and_test.yml
