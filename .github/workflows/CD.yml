@@ -26,4 +26,5 @@ jobs:
         uses: docker/setup-compose-action@v2
 
       - name: Start services
-        run: docker compose up -d
+        #run: docker compose up -d
+        run: docker compose up -d --build --force-recreate
