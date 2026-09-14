@@ -20,8 +20,8 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt
 
-      - name: install ruff
-        run: pip install ruff
+      #- name: install ruff
+       # run: pip install ruff
 
       - name: run ruff
         run: ruff check .
