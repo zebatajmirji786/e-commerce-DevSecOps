@@ -1,9 +1,10 @@
 # Goal: to deploy built and tested docker image - not recommended because github actions are not meant for deployment , this CD.yml is just for demo purpose
+# Goal: to deploy built and tested docker image - not recommended because github actions are not meant for deployment , this CD.yml is just for demo purpose
 name: CD
 
 on:
-    workflow_call:
-        
+  workflow_call:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
