@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopEase - Online Shopping</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background-color: #111827;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #f59e0b;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 550px;
+            display: flex;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: none;
+            outline: none;
+            border-radius: 6px 0 0 6px;
+            font-size: 15px;
+        }
+
+        .search-box button {
+            border: none;
+            padding: 0 20px;
+            background: #f59e0b;
+            cursor: pointer;
+            border-radius: 0 6px 6px 0;
+            font-size: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .cart {
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 430px;
+            padding: 70px 8%;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)
+                ),
+                url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: #f59e0b;
+            color: #111;
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ================= CATEGORY ================= */
+
+        .categories {
+            padding: 40px 6%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+        }
+
+        .section-title p {
+            margin-top: 8px;
+            color: #666;
+        }
+
+        .category-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .category h3 {
+            font-size: 18px;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            padding: 30px 6% 60px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .sale {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #ef4444;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .rating {
+            color: #f59e0b;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 8px;
+            font-size: 14px;
+        }
+
+        .add-cart {
+            width: 100%;
+            margin-top: 15px;
+            padding: 11px;
+            border: none;
+            border-radius: 6px;
+            background: #111827;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .add-cart:hover {
+            background: #f59e0b;
+            color: #111;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            padding: 40px 6%;
+            text-align: center;
+        }
+
+        footer h2 {
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #bbb;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .search-box {
+                order: 3;
+                width: 100%;
+                max-width: none;
+            }
+
+            .category-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .category-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 400px;
+                padding: 50px 7%;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Shop<span>Ease</span>
+        </div>
+
+        <div class="search-box">
+            <input
+                type="text"
+                placeholder="Search for products..."
+            >
+
+            <button>
+                🔍
+            </button>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Deals</a>
+            <a href="#">Login</a>
+
+            <div class="cart">
+                🛒
+            </div>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Discover Your Style
+            </h1>
+
+            <p>
+                Shop the latest fashion, electronics and
+                lifestyle products at amazing prices.
+            </p>
+
+            <a href="#products" class="hero-button">
+                Shop Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="categories">
+
+        <div class="section-title">
+
+            <h2>
+                Shop By Category
+            </h2>
+
+            <p>
+                Find everything you need
+            </p>
+
+        </div>
+
+
+        <div class="category-container">
+
+            <div class="category">
+                <div class="category-icon">👕</div>
+                <h3>Fashion</h3>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">📱</div>
+                <h3>Electronics</h3>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">👟</div>
+                <h3>Footwear</h3>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🏠</div>
+                <h3>Home & Living</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="products" id="products">
+
+        <div class="section-title">
+
+            <h2>
+                Trending Products
+            </h2>
+
+            <p>
+                Popular products picked for you
+            </p>
+
+        </div>
+
+
+        <div class="product-container">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="product-card">
+
+                <span class="sale">
+                    SALE
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+                    alt="Running Shoes"
+                >
+
+                <div class="product-info">
+
+                    <h3>
+                        Running Shoes
+                    </h3>
+
+                    <div class="rating">
+                        ★★★★★
+                    </div>
+
+                    <span class="price">
+                        ₹1,999
+                    </span>
+
+                    <span class="old-price">
+                        ₹2,999
+                    </span>
+
+                    <button class="add-cart">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="product-card">
+
+                <span class="sale">
+                    20% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+                    alt="Smart Watch"
+                >
+
+                <div class="product-info">
+
+                    <h3>
+                        Smart Watch
+                    </h3>
+
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
+
+                    <span class="price">
+                        ₹2,499
+                    </span>
+
+                    <span class="old-price">
+                        ₹3,499
+                    </span>
+
+                    <button class="add-cart">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="product-card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+                    alt="Headphones"
+                >
+
+                <div class="product-info">
+
+                    <h3>
+                        Wireless Headphones
+                    </h3>
+
+                    <div class="rating">
+                        ★★★★★
+                    </div>
+
+                    <span class="price">
+                        ₹1,799
+                    </span>
+
+                    <span class="old-price">
+                        ₹2,499
+                    </span>
+
+                    <button class="add-cart">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="product-card">
+
+                <span class="sale">
+                    NEW
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=80"
+                    alt="Fashion Jacket"
+                >
+
+                <div class="product-info">
+
+                    <h3>
+                        Casual Jacket
+                    </h3>
+
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
+
+                    <span class="price">
+                        ₹1,499
+                    </span>
+
+                    <span class="old-price">
+                        ₹2,199
+                    </span>
+
+                    <button class="add-cart">
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>
+            ShopEase
+        </h2>
+
+        <p>
+            Your one-stop online shopping destination.
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 ShopEase. All rights reserved.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
