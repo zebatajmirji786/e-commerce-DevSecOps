@@ -2,8 +2,8 @@
 name: CD
 
 on:
-    workflow_call:
-
+    workflow_dispatch:
+        
 jobs:
   deploy:
     runs-on: ubuntu-latest
