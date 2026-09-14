@@ -24,9 +24,9 @@ jobs:
 
 
       # Step 4: Build and push the Docker image
-     #- name: Build and push Docker image
-     # uses: docker/build-push-action@v5
-      #with:
-       #  context: .
-        # push: true
-         #tags: ${{ github.actor }}/my-app:latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v7
+        with:
+         push: true
+         tags: ${{ secrets.DOCKERHUB_USERNAME }}/e-commerce-python:latest 
+
