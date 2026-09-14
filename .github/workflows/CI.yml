@@ -5,10 +5,9 @@ on:
   push:
 
 jobs:
-  code lint:
+  code-lint:
     uses: ./.github/workflows/lint_and_test.yml
 
-  docker build and push:
-    needs: code lint
+  docker-build-and-push:
+    needs: code-lint
     uses: ./.github/workflows/docker.yml
-    

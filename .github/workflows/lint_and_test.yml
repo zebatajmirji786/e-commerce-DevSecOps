@@ -1,5 +1,5 @@
 # Goal: To check if python code is syntatically correct and to run tests
-name: code lint
+name: code-lint
 
 on: 
   #push:
