@@ -3,7 +3,7 @@ name: code lint
 
 on: 
   #push:
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   code-linter-tester:

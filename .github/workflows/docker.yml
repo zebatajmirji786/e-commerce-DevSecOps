@@ -1,7 +1,7 @@
 # Goal: to build and push docker images
 name: docker build and push
 on:
-  push:
+  workflow_call:
 
 jobs:
   docker-build-and-push:
