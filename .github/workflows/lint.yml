@@ -20,7 +20,10 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt
 
-      - name: code lint
+      - name: install ruff
+        run: pip install ruff
+
+      - name: run ruff
         run: ruff check .
 
          
