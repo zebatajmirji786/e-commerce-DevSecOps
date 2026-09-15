@@ -35,5 +35,5 @@ paths = [
 # Ignore specific, inactive, or fake secrets globally across the repository
 regexes = [
     '''mycompany_fakekeyfortesting12345678''',
-    '''glpat-1234567890abcdefghij'''
+    
 ]
