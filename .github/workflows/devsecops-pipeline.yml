@@ -29,10 +29,10 @@ jobs:
   
 
   #build
-  #  docker-build-and-push:
-  #    needs: code-lint
-  #    secrets: inheritS
-  #    uses: ./.github/workflows/docker.yml
+    docker-build-and-scan:
+      needs: code-lint
+      uses: ./.github/workflows/trivy-scan.yml
+      secrets: inherit
 
   #CD  
   #deploy
