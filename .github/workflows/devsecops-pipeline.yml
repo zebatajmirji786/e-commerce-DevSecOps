@@ -15,7 +15,14 @@ jobs:
     code-lint:
       uses: ./.github/workflows/lint_and_test.yml
       needs: secrets-scanning
-      
+
+  #sonar scan SAAST
+    sonar-scan:
+      uses: ./.github/workflows/sonar-scan.yml
+      needs: code-lint
+      secrets: inherit
+     
+
 
   #build
   #  docker-build-and-push:
