@@ -1,0 +1,39 @@
+# Configuration title
+title = "E-Commers project Gitleaks Configuration"
+
+# Extend the built-in default Gitleaks rules
+[extend]
+useDefault = true
+
+# Define custom rules to catch secrets specific to your stack
+[[rules]]
+id = "custom-api-key"
+description = "Detected a company-specific internal API key"
+regex = '''(?i)mycompany_[a-z0-9]{32}'''
+secretGroup = 0
+tags = ["key", "internal"]
+
+[[rules]]
+id = "generic-password-assignment"
+description = "Generic password assignment pattern"
+regex = '''(?i)password\s*=\s*['"][^'"]{8,}['"]'''
+tags = ["password"]
+
+# Global allowlist to prevent false positives and ignore safe files
+[allowlist]
+description = "Global allowlist for safe paths and known fake credentials"
+
+# Ignore entire directories, file names, or extensions using regex
+paths = [
+    '''(^|/)node_modules/''',
+    '''(^|/)vendor/''',
+    '''_test\.go$''',
+    '''\.lock$''',
+    '''(^|/)testdata/'''
+]
+
+# Ignore specific, inactive, or fake secrets globally across the repository
+regexes = [
+    '''mycompany_fakekeyfortesting12345678''',
+    '''glpat-1234567890abcdefghij'''
+]
