@@ -30,7 +30,7 @@ jobs:
 
   #build
     docker-build-and-scan:
-      needs: code-lint
+      needs: dependency-scan
       uses: ./.github/workflows/trivy-scan.yml
       secrets: inherit
 
