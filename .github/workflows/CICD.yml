@@ -2,9 +2,10 @@
 name: CI
 
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
+  #CI
   #code lint
   code-lint:
     uses: ./.github/workflows/lint_and_test.yml
@@ -15,6 +16,7 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/docker.yml
 
+  #CD  
   #deploy
   CD:
     needs: docker-build-and-push
