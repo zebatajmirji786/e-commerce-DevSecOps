@@ -22,7 +22,11 @@ jobs:
       needs: code-lint
       secrets: inherit
      
-
+  #Dependency scan
+    dependency-scan:
+      uses: ./.github/workflows/Dependency-scan.yml
+      needs: sonar-scan
+      
 
   #build
   #  docker-build-and-push:
