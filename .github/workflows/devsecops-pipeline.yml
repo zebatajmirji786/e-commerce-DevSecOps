@@ -42,9 +42,14 @@ jobs:
 
   #CD  
   #deploy
-  #  CD:
-   #   needs: docker-build-and-push
-    #  uses: ./.github/workflows/CD.yml
-     # secrets: inherit
+    CD:
+      needs: docker-build-and-scan
+      uses: ./.github/workflows/CD.yml
+      secrets: inherit
     
+#DAST (SHIFT RIGHT SECURITY)
+    DAST:
+      needs: CD
+      uses: ./.github/workflows/dast.yml
+      secrets: inherit
 
