@@ -26,12 +26,12 @@ jobs:
     dependency-scan:
       uses: ./.github/workflows/Dependency-scan.yml
       needs: sonar-scan
-      
+  
 
   #build
   #  docker-build-and-push:
   #    needs: code-lint
-  #    secrets: inherit
+  #    secrets: inheritS
   #    uses: ./.github/workflows/docker.yml
 
   #CD  
