@@ -12,7 +12,7 @@ jobs:
              - name: wait for server to be healthy
                run: |
                  echo "Waiting for the server to be healthy..."
-                 timeout=60 sh -c 'until curl -s http://$((secrets.EC2_HOST)):80 > /dev/null; do sleep 5; done'
+                 timeout=60 sh -c 'until curl -s http://${{secrets.EC2_HOST}}:80 > /dev/null; do sleep 5; done'
 
                 #scan running application 
              - name: owasp zap baseline scan
